@@ -1,4 +1,4 @@
-import scala.util.Try
+import ArgumentProcessor._
 
 object NetWorth {
   def main(args: Array[String]): Unit = {
@@ -15,16 +15,13 @@ object NetWorth {
     )
 
   def calculate(neededArguments: Int, args: Array[String]): Either[String, Double] = {
-    ArgumentProcessor.process(args).map(convertToDouble) match {
+    process(args) match {
       case List(maybeAssets, maybeLiabilities, _*) =>
         calculateNetWorth(maybeAssets, maybeLiabilities)
       case _ =>
         Left(s"Calculation requires at least $neededArguments arguments")
     }
   }
-
-  private def convertToDouble(maybeString: Either[String, String]): Either[String, Double] =
-    maybeString.flatMap(string => Try(string.toDouble).toEither.left.map(e => s"$e"))
 
   private def calculateNetWorth(maybeAssets: Either[String, Double], maybeLiabilities: Either[String, Double]): Either[String, Double] =
     for {
