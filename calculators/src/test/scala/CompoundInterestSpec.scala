@@ -29,6 +29,8 @@ class CompoundInterestSpec extends FlatSpec with Matchers {
             assertApproximately(expectedAnnualReturnRate, actualAnnualReturnRate, e, "annual return rate")
             assertApproximately(expectedNumberOfYearsLeftToGrow, actualNumberOfYearsLeftToGrow, e, "number of years left to grow")
             assertApproximately(expectedNumberOfTimesCompoundedPerYear, actualNumberOfTimesCompoundedPerYear, e, "number of times compounded per year")
+          case _ =>
+            assert(actual == expected, s"Expected $expected but the result was $actual")
         }
       case _ =>
         assert(actual == expected, s"Expected $expected but the result was $actual")
