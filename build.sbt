@@ -1,9 +1,11 @@
 import com.typesafe.sbt.packager.docker.ExecCmd
 
 name := "sbt-getting-started-dh"
+
 scalaVersion := "2.13.6"
 
 ThisBuild / version := "1.0"
+
 ThisBuild / licenses ++= Seq(
   ("MIT", url("http://opensource.org/licenses/MIT"))
 )

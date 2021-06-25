@@ -6,4 +6,6 @@ services:
   - docker
 after_success:
   - docker tag calculators:1.0 danielatdaugherty/calculators:$TRAVIS_BUILD_NUMBER
+  - docker push danielatdaugherty/calculators:$TRAVIS_BUILD_NUMBER
   - docker tag calculators:1.0 danielatdaugherty/calculators:latest
+  - docker push danielatdaugherty/calculators:latest
