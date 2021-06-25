@@ -6,7 +6,4 @@ services:
   - docker
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker tag calculators:1.0 $DOCKER_USERNAME/calculators:$TRAVIS_BUILD_NUMBER
-  - docker push $DOCKER_USERNAME/calculators:$TRAVIS_BUILD_NUMBER
-  - docker tag calculators:1.0 $DOCKER_USERNAME/calculators:latest
-  - docker push $DOCKER_USERNAME/calculators:latest
+  - sbt docker:publish
