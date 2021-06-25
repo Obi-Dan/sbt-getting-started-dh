@@ -1,3 +1,9 @@
 language: scala
 scala:
   - 2.13.6
+sudo: required
+services:
+  - docker
+after_success:
+  - docker tag calculators:1.0 danielatdaugherty/calculators:$TRAVIS_BUILD_NUMBER
+  - docker tag calculators:1.0 danielatdaugherty/calculators:latest
