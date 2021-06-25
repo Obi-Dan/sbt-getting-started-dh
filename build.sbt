@@ -22,7 +22,7 @@ lazy val calculators = project
     },
     dockerCommands ++= Seq(
       ExecCmd("ENTRYPOINT", "/opt/docker/bin/net-worth")
-    ),
+    )
   )
 
 lazy val api = project
